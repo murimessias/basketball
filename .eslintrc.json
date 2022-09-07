@@ -42,7 +42,7 @@
           "/^hooks/",
           "/^constants/",
           "/^utils/",
-          "/^types/",
+          "/^@types/",
           "parent",
           "sibling",
           "index"
