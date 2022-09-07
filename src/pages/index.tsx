@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
-import TemplateExample from 'templates'
 
-const Home: NextPage = () => <TemplateExample />
+const Home: NextPage = () => <div>Página</div>
 
 export default Home
