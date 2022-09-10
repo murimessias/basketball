@@ -6,13 +6,13 @@ type PlayersTemplateProps = {
 
 const PlayersTemplate = ({ data }: PlayersTemplateProps) => {
   return (
-    <>
-      {data.map(({ first_name, id, last_name }) => (
-        <span key={id}>
-          {first_name} {last_name}
-        </span>
+    <ul>
+      {data.map(({ first_name, id, last_name, team }) => (
+        <li key={id}>
+          {first_name} {last_name} - {team.full_name}
+        </li>
       ))}
-    </>
+    </ul>
   )
 }
 

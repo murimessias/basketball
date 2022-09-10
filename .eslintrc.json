@@ -29,7 +29,7 @@
         "newlinesBetween": "never",
         "groups": [
           "/^react$/",
-          "/^next$/",
+          "/^next/",
           "module",
           "/^libs/",
           "/^pages/",
