@@ -6,8 +6,16 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { opinionated } from 'stitches-normalize-css'
+import { globalCss } from 'libs/stitches'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const globalStyles = globalCss(...opinionated)
+
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{ dehydratedState: unknown }>) {
+  globalStyles()
   const [queryClient] = useState(() => new QueryClient())
 
   return (
