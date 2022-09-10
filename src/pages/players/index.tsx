@@ -14,9 +14,9 @@ const Button = styled('button', {
   all: 'unset',
   // Styles
   alignItems: 'center',
-  backgroundColor: 'Gray',
+  backgroundColor: '$slate8',
   borderRadius: '0.25rem',
-  color: 'white',
+  color: '$slate12',
   cursor: 'pointer',
   display: 'inline-flex',
   fontWeight: 'bold',
@@ -25,9 +25,18 @@ const Button = styled('button', {
   lineHeight: '1',
   minWidth: '10ch',
   padding: '0.5rem 0.75rem',
-  '&:hover:not(:disabled)': { backgroundColor: 'DimGray' },
-  '&:active:not(:disabled)': { backgroundColor: 'DarkGray' },
-  '&:disabled': { backgroundColor: 'DarkGray', cursor: 'not-allowed' },
+  transition: 'background-color 250ms ease-in',
+  '&:hover:not(:disabled)': {
+    backgroundColor: '$slate6',
+  },
+  '&:active:not(:disabled)': {
+    backgroundColor: '$slate7',
+  },
+  '&:disabled': {
+    backgroundColor: '$slate5',
+    color: '$slate11',
+    cursor: 'not-allowed',
+  },
 })
 
 const CurrentPage = styled('span', {

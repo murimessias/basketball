@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import {
   Hydrate,
@@ -6,10 +7,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { opinionated } from 'stitches-normalize-css'
-import { globalCss } from 'libs/stitches'
-
-const globalStyles = globalCss(...opinionated)
+import { darkTheme } from 'libs/stitches'
+import { globalStyles } from 'styles/globals'
 
 function MyApp({
   Component,
@@ -21,7 +20,14 @@ function MyApp({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        <ThemeProvider
+          attribute='class'
+          disableTransitionChange
+          value={{ light: 'light-theme', dark: darkTheme.className }}
+          defaultTheme='system'
+        >
+          <Component {...pageProps} />
+        </ThemeProvider>
         <ReactQueryDevtools />
       </Hydrate>
     </QueryClientProvider>
