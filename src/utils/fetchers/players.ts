@@ -1,15 +1,17 @@
 import { api } from 'libs/axios'
 import { Meta, Player } from '@types'
 
-type FetchPlayersRequest = { page?: number; per_page?: number; search?: string }
 type FetchPlayersResponse = { data: Player[]; meta: Meta }
 
-export async function fetchPlayers({
-  page = 0,
-  per_page = 25,
-}: FetchPlayersRequest): Promise<FetchPlayersResponse> {
+export async function fetchPlayers(
+  page?: number,
+  per_page?: number,
+): Promise<FetchPlayersResponse> {
+  const pageString = page ? `&page=${page}` : ''
+  const perPageString = per_page ? `&per_page=${per_page}` : ''
+
   const res = await api.get<FetchPlayersResponse>(
-    `/players?page=${page}&per_page=${per_page}`,
+    `/players?${pageString}${perPageString}`,
   )
   return res.data
 }
