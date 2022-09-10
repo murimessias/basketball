@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { GetServerSideProps, NextPage } from 'next'
+import { useTheme } from 'next-themes'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import {
   dehydrate,
   useQuery,
@@ -39,6 +41,11 @@ const Button = styled('button', {
   },
 })
 
+const IconButton = styled(Button, {
+  minWidth: 'unset',
+  p: '0.5rem',
+})
+
 const CurrentPage = styled('span', {
   alignItems: 'center',
   display: 'inline-flex',
@@ -52,9 +59,15 @@ const Flex = styled('div', {
 })
 
 const PlayersPage: NextPage = () => {
+  const [mounted, setMounted] = useState(false)
+  const { setTheme, theme } = useTheme()
   const queryClient = useQueryClient()
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const playersQuery = useQuery(
     ['players', { page, pageSize }],
@@ -68,6 +81,7 @@ const PlayersPage: NextPage = () => {
     )
   }, [page, pageSize, queryClient])
 
+  if (!mounted) return null
   if (playersQuery.isError) return <div>Erro...</div>
 
   const handlePreviousPage = () => setPage((page) => page - 1)
@@ -78,6 +92,21 @@ const PlayersPage: NextPage = () => {
   ) : (
     playersQuery.isSuccess && (
       <div>
+        <IconButton
+          css={{ mr: '0.5rem' }}
+          disabled={theme === 'light'}
+          onClick={() => setTheme('light')}
+        >
+          <SunIcon />
+        </IconButton>
+
+        <IconButton
+          disabled={theme === 'dark'}
+          onClick={() => setTheme('dark')}
+        >
+          <MoonIcon />
+        </IconButton>
+
         <PlayersTemplate data={playersQuery.data.data} />
         <Flex>
           <Button disabled={page === 1} onClick={handlePreviousPage}>
