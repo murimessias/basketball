@@ -22,7 +22,7 @@ function MyApp({
       <Hydrate state={pageProps.dehydratedState}>
         <ThemeProvider
           attribute='class'
-          disableTransitionChange
+          disableTransitionOnChange
           value={{ light: 'light-theme', dark: darkTheme.className }}
           defaultTheme='system'
         >

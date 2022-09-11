@@ -1,4 +1,4 @@
-import type { PropertyValue, ScaleValue } from './stiches.config'
+import type { PropertyValue, ScaleValue } from './stitches.config'
 
 export const stitchesUtils = {
   p: (value: PropertyValue<'padding'>) => ({
