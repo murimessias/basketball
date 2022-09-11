@@ -26,3 +26,4 @@ export const darkTheme = createTheme('dark-theme', {
 
 // Types
 export type CSS = Stitches.CSS
+export type { PropertyValue, ScaleValue } from '@stitches/react'

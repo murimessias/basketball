@@ -1,9 +1,11 @@
-import nextJest from 'next/jest'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({
   dir: './',
 })
 
+/** @type {import('jest').Config} */
 const customJestConfig = {
   collectCoverage: true,
   collectCoverageFrom: [
@@ -20,4 +22,4 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
 }
 
-export default createJestConfig(customJestConfig)
+module.exports = createJestConfig(customJestConfig)

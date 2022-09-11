@@ -1,5 +1,5 @@
+import { Meta, Player } from 'types'
 import { api } from 'libs/axios'
-import { Meta, Player } from '@types'
 
 type FetchPlayersResponse = { data: Player[]; meta: Meta }
 
