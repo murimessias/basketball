@@ -10,12 +10,20 @@
     "lint:fix": "yarn lint --fix",
     "postinstall": "husky install",
     "prepare": "husky install",
-    "type-check": "tsc --project tsconfig.json --noEmit --pretty",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "type-check:watch": "yarn type-check --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "yarn lint --fix"
+      "yarn lint --fix",
+      "yarn test --findRelatedTests --bail"
     ]
   },
   "dependencies": {
@@ -25,26 +33,33 @@
     "@tanstack/react-query": "^4.2.3",
     "@tanstack/react-query-devtools": "^4.2.3",
     "axios": "^0.27.2",
-    "next": "^12.3.0",
+    "next": "latest",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "stitches-normalize-css": "^1.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.0.0",
     "@types/node": "^18.7.16",
     "@types/react": "^18.0.19",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.2.5",
+    "eslint": "^8.23.0",
+    "eslint-config-next": "^12.3.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import-helpers": "^1.2.1",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.0",
+    "jest": "^29.0.3",
+    "jest-environment-jsdom": "^29.0.3",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.9.1",
     "typescript": "4.8.3"
   }
 }
