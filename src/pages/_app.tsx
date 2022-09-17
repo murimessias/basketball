@@ -10,6 +10,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { darkTheme } from 'libs/stitches'
 import { globalStyles } from 'styles/globals'
 
+import '../styles/fonts.css'
+
 function MyApp({
   Component,
   pageProps,
